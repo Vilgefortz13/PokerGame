@@ -11,7 +11,7 @@ namespace PokerGame
         private const int CountOfSuits = 4;
         private const int CountOfValues = 13;
         public List<string> DeckOfCards { get; private set; } = new();
-       
+
         public void InitializeDeck()
         {
             for (int i = 0; i < CountOfSuits; i++)
@@ -30,20 +30,9 @@ namespace PokerGame
             string card = deck[removeElement];
             deck.RemoveAt(removeElement);
             deck.Insert(removeElement, null);
+
             return card;
         }
-
-        //public String?[] takeACard(int cardCount, String?[] cards)
-        //{
-        //    String[] deck = new String[cardCount];
-        //    for (int i = 0; i < deck.Length; i++)
-        //    {
-        //        deck[i] = cards[i];
-        //        cards[i] = null;
-        //    }
-
-        //    return deck;
-        //}
 
         public static void ShuffleTheDeck(List<string> deck)
         {
@@ -64,13 +53,7 @@ namespace PokerGame
                 return;
             }
 
-            for (int i = 0; i < DeckOfCards.Count; i++)
-            {
-                if (DeckOfCards[i] == null)
-                {
-                    DeckOfCards[i] = card;
-                }
-            }
+            DeckOfCards.Add(card);
         }
     }
 }

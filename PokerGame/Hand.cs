@@ -12,7 +12,13 @@ namespace PokerGame
 
         public void AddCardToHand(Deck deck)
         {
-            CardsInHand.Add(Deck.GetCardFromTheDeck(deck.DeckOfCards));
+            if (deck.DeckOfCards.Any(card => !string.IsNullOrEmpty(card)))
+            {
+                string newCard = deck.DeckOfCards.First(card => !string.IsNullOrEmpty(card));
+
+                CardsInHand.Add(newCard);
+                deck.DeckOfCards.Remove(newCard);
+            }
         }
 
         public void ReplaceCardInHand(Deck deck, int cardPosition)
